@@ -1,5 +1,5 @@
-package com.codegym.casestudymodule4.model.order_detail;
-import com.codegym.casestudymodule4.model.order.Bill;
+package com.codegym.casestudymodule4.model.bill_detail;
+import com.codegym.casestudymodule4.model.bill.Bill;
 import com.codegym.casestudymodule4.model.product.Product;
 import lombok.AllArgsConstructor;
 import lombok.Data;

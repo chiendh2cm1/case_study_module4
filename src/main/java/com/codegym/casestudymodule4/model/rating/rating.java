@@ -16,6 +16,7 @@ public class rating {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private int rating_lever;
+    private String comment;
     @ManyToOne
     private User user;
     @ManyToOne

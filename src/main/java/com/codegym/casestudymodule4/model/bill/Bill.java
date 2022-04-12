@@ -1,4 +1,4 @@
-package com.codegym.casestudymodule4.model.order;
+package com.codegym.casestudymodule4.model.bill;
 import com.codegym.casestudymodule4.model.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
