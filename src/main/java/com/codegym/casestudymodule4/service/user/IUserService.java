@@ -10,7 +10,7 @@ public interface IUserService extends UserDetailsService {
 
     Optional<User> findById(Long id);
 
-    Iterable<User> findByName(String name);
+    Optional<User> findByName(String name);
 
     User save(User user);
 

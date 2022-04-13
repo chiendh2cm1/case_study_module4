@@ -33,7 +33,7 @@ public class UserService implements IUserService{
     }
 
     @Override
-    public Iterable<User> findByName(String name) {
+    public Optional<User> findByName(String name) {
         return null;
     }
 
