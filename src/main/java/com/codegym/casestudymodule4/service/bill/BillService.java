@@ -3,9 +3,11 @@ package com.codegym.casestudymodule4.service.bill;
 import com.codegym.casestudymodule4.model.bill.Bill;
 import com.codegym.casestudymodule4.repository.bill.IBillRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+@Service
 public class BillService implements IBillService {
     @Autowired
     IBillRepository billRepository;
@@ -17,7 +19,7 @@ public class BillService implements IBillService {
 
     @Override
     public void remove(Long id) {
-        billRepository.deleteById(id);
+        billRepository.deleteBill(id);
     }
 
     @Override

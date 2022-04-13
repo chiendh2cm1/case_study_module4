@@ -28,7 +28,7 @@ public class ProductController {
     private IProductService productService;
 
     @GetMapping
-    public ResponseEntity<Page<Product>> fillAllProduct(@RequestParam(name = "q") Optional<String> q, @PageableDefault(size = 5) Pageable pageable) {
+    public ResponseEntity<Page<Product>> fillAllProduct(@RequestParam(name = "q") Optional<String> q, @PageableDefault(size = 8) Pageable pageable) {
         Page<Product> productPage = null;
         if (q.isPresent()) {
             productPage = productService.findAllByNameContaining(q.get(), pageable);

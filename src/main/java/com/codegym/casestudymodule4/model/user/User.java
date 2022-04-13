@@ -17,22 +17,26 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(columnDefinition = "varchar(50)", nullable = false, unique = true)
     private String username;
-    @Column(columnDefinition = "varchar(50)", nullable = false)
     private String fullName;
-    @Column(columnDefinition = "text", nullable = false)
-    @Size(min = 6, max = 8, message = "Tên sản phẩm phải từ 6 -> 8 ký tự")
     private String password;
-    @Column(columnDefinition = "varchar(50)", nullable = false, unique = true)
     private String email;
-    @Column(columnDefinition = "varchar(12)", nullable = false, unique = true)
     private String phoneNumber;
+    private String role;
     @ManyToMany(fetch = FetchType.EAGER)
     List<Role> roles;
 
     public User(String username, String password) {
         this.username = username;
         this.password = password;
+    }
+
+    public User(String username, String fullName, String password, String email, String phoneNumber, String role) {
+        this.username = username;
+        this.fullName = fullName;
+        this.password = password;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.role = role;
     }
 }
