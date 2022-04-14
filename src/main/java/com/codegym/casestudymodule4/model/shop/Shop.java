@@ -1,12 +1,10 @@
 package com.codegym.casestudymodule4.model.shop;
 
-import com.codegym.casestudymodule4.model.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Data
 @NoArgsConstructor

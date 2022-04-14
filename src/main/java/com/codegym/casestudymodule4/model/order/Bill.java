@@ -1,14 +1,11 @@
 package com.codegym.casestudymodule4.model.order;
-import com.codegym.casestudymodule4.model.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Entity
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
 public class Bill {
     @Id
@@ -20,4 +17,57 @@ public class Bill {
     private String phoneNumber;
     @ManyToOne
     private User user;
+
+
+    public Bill() {
+    }
+
+    public Bill(Long id, String receiver, String address, String email, String phoneNumber) {
+        this.id = id;
+        this.receiver = receiver;
+        this.address = address;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+    }
+
+    public Long getId() {
+
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getReceiver() {
+        return receiver;
+    }
+
+    public void setReceiver(String receiver) {
+        this.receiver = receiver;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
 }

@@ -1,4 +1,5 @@
 package com.codegym.casestudymodule4.model.order_detail;
+
 import com.codegym.casestudymodule4.model.order.Bill;
 import com.codegym.casestudymodule4.model.product.Product;
 import lombok.AllArgsConstructor;
@@ -22,4 +23,5 @@ public class Bill_detail {
     private Bill bill;
     @ManyToOne
     private Product product;
+
 }
