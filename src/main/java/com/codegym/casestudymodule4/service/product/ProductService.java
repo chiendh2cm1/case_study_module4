@@ -40,6 +40,27 @@ public class ProductService implements IProductService {
     }
 
     @Override
+    public Page<Product> findByUser(Long id, Pageable pageable) {
+        return productRepository.getProductByUser(id, pageable);
+    }
+
+    @Override
+    public Page<Product> findByPrice1v3(Pageable pageable) {
+        return productRepository.getProductBy1V3(pageable);
+    }
+
+    @Override
+    public Page<Product> findByPrice3v5(Pageable pageable) {
+        return productRepository.getProductBy3V5(pageable);
+    }
+
+    @Override
+    public Page<Product> findByPrice5v7(Pageable pageable) {
+        return productRepository.getProductBy5V7(pageable);
+    }
+
+
+    @Override
     public Page<Product> findAll(Pageable pageable) {
         return productRepository.findAll(pageable);
     }

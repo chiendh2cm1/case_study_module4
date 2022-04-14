@@ -1,6 +1,9 @@
 package com.codegym.casestudymodule4.service.user;
 
 import com.codegym.casestudymodule4.model.user.User;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.Optional;
@@ -18,4 +21,6 @@ public interface IUserService extends UserDetailsService {
     User findByUsername(String username);
     User saveAdmin(User user);
     User saveSeller(User user);
+    Page<User> findAllUser(Pageable pageable);
+
 }

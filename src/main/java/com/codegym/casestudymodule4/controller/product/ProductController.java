@@ -41,6 +41,20 @@ public class ProductController {
         return new ResponseEntity<>(productPage, HttpStatus.OK);
     }
 
+    @GetMapping("/viewProductByUser/{id}")
+    public ResponseEntity<Page<Product>> fillAllProductByUser(@RequestParam(name = "q") Optional<String> q, @PathVariable Long id, @PageableDefault(size = 8) Pageable pageable) {
+        Page<Product> productPage = null;
+        if (q.isPresent()) {
+            productPage = productService.findAllByNameContaining(q.get(), pageable);
+        } else {
+            productPage = productService.findByUser(id, pageable);
+        }
+        if (productPage.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(productPage, HttpStatus.OK);
+    }
+
 
     @GetMapping("/{id}")
     public ResponseEntity<Product> findById(@PathVariable Long id) {
@@ -65,16 +79,6 @@ public class ProductController {
         product.setCategory(productForm.getCategory());
         return new ResponseEntity<>(productService.save(product), HttpStatus.CREATED);
     }
-
-//    @PutMapping("/{id}")
-//    private ResponseEntity<Product> editProduct(@PathVariable Long id, @RequestBody Product product) {
-//        Optional<Product> productOptional = productService.findById(id);
-//        if (!productOptional.isPresent()) {
-//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//        }
-//        product.setId(productOptional.get().getId());
-//        return new ResponseEntity<>(productService.save(product), HttpStatus.OK);
-//    }
 
     @PostMapping("/{id}")
     private ResponseEntity<Product> editProduct(@PathVariable Long id, ProductForm productForm) {
@@ -121,6 +125,33 @@ public class ProductController {
         }
         productService.remove(id);
         return new ResponseEntity<>(productOptional.get(), HttpStatus.OK);
+    }
+
+    @GetMapping("/findByPrice1v5")
+    public ResponseEntity<Page<Product>> getByPrice1v5(@PageableDefault(size = 8) Pageable pageable) {
+        Page<Product> productPage = productService.findByPrice1v3(pageable);
+        if (productPage.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(productPage, HttpStatus.OK);
+    }
+
+    @GetMapping("/findByPrice5v10")
+    public ResponseEntity<Page<Product>> getByPrice3v5(@PageableDefault(size = 8) Pageable pageable) {
+        Page<Product> productPage = productService.findByPrice3v5(pageable);
+        if (productPage.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(productPage, HttpStatus.OK);
+    }
+
+    @GetMapping("/findByPrice10v15")
+    public ResponseEntity<Page<Product>> getByPrice5v7(@PageableDefault(size = 8) Pageable pageable) {
+        Page<Product> productPage = productService.findByPrice5v7(pageable);
+        if (productPage.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(productPage, HttpStatus.OK);
     }
 
 }

@@ -17,7 +17,7 @@ public class BillController {
     @Autowired
     IBillService billService;
 
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     public ResponseEntity<Bill> deleteBill(@PathVariable Long id) {
         Optional<Bill> billOptional = billService.findById(id);
         if (!billOptional.isPresent()) {
@@ -42,9 +42,9 @@ public class BillController {
         return new ResponseEntity<>(billService.save(bill), HttpStatus.OK);
     }
 
-    @GetMapping
-    public ResponseEntity<Iterable<Bill>> showList() {
-        Iterable<Bill> bills = billService.findAll();
+    @GetMapping("viewByUser/{id}")
+    public ResponseEntity<Iterable<Bill>> showList(@PathVariable Long id) {
+        Iterable<Bill> bills = billService.findByUser(id);
         return new ResponseEntity<>(bills, HttpStatus.OK);
     }
 

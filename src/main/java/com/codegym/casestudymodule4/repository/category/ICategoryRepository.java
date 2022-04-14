@@ -15,4 +15,9 @@ public interface ICategoryRepository extends PagingAndSortingRepository<Category
     @Modifying
     @Query(value = "call delete_category(?1)", nativeQuery = true)
     void deleteCategory(Long id);
+    @Query(value = "select * from category join shop s on s.id = category.shop_id where shop_id=?1", nativeQuery = true)
+    Page<Category> getCategoryByShop(Long id, Pageable pageable);
+
+    @Query(value = "select * from category join shop s on s.id = category.shop_id join user u on u.id = s.user_id where u.id=?1", nativeQuery = true)
+    Iterable<Category> getCategoryByUser(Long id);
 }

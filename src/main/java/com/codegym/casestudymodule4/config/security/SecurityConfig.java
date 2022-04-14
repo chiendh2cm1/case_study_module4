@@ -72,10 +72,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/image/**",
                         "/login",
-                        "/register").permitAll()
-                .antMatchers("/products/**", "/categories/**")
-//                .access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_SELLER')")
-                .access("hasRole('ROLE_SELLER') or hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+                        "/register",
+                        "**").permitAll()
+                .antMatchers("/products/**")
+                .access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
                 .anyRequest().authenticated()
                 .and().csrf().disable();
         http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)

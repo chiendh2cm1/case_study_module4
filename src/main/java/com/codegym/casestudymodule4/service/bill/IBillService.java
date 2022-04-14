@@ -9,4 +9,5 @@ public interface IBillService {
     void remove(Long id);
     Optional<Bill> findById(Long id);
     Bill save(Bill bill);
+    Iterable<Bill> findByUser(Long id);
 }

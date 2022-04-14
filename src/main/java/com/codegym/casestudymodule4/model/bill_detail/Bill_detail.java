@@ -15,11 +15,11 @@ public class Bill_detail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String name;
     private int quantity;
     private double price;
-    private double discount;
     @ManyToOne
     private Bill bill;
-    @ManyToOne
+    @OneToOne
     private Product product;
 }

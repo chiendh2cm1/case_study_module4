@@ -15,4 +15,8 @@ public interface IProductService {
     public Iterable<Product> findByName(String name);
     public Product save(Product product);
     public void remove(Long id);
+    Page<Product> findByUser(Long id, Pageable pageable);
+    Page<Product> findByPrice1v3(Pageable pageable);
+    Page<Product> findByPrice3v5(Pageable pageable);
+    Page<Product> findByPrice5v7(Pageable pageable);
 }

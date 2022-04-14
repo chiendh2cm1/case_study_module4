@@ -31,4 +31,9 @@ public class BillService implements IBillService {
     public Bill save(Bill bill) {
         return billRepository.save(bill);
     }
+
+    @Override
+    public Iterable<Bill> findByUser(Long id) {
+        return billRepository.getBillByUser(id);
+    }
 }

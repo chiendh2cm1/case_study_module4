@@ -20,4 +20,12 @@ public class Bill {
     private String phoneNumber;
     @ManyToOne
     private User user;
+
+    public Bill(Long id, String address, String email, String phoneNumber, User user) {
+        this.id = id;
+        this.address = address;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.user = user;
+    }
 }

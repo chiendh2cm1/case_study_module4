@@ -72,7 +72,6 @@ public class CategoryController {
         }
         return new ResponseEntity<>(categoryOptional.get(), HttpStatus.OK);
     }
-
     @GetMapping("view/{id}")
     public ResponseEntity<Page<Product>> viewDetailCategory(@PathVariable Long id, @PageableDefault(size = 8) Pageable pageable) {
         Page<Product> products = productService.getProductWithName(id, pageable);
