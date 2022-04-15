@@ -27,4 +27,7 @@ public interface IProductRepository extends PagingAndSortingRepository<Product, 
 
     @Query(value = "select * from product where price between 1000000 and 1500000", nativeQuery = true)
     Page<Product> getProductBy5V7(Pageable pageable);
+
+    @Query(value = "select * from product join category c on c.id = product.category_id join shop s on s.id = c.shop_id where s.id=?1", nativeQuery = true)
+    Page<Product> getProductByShop(Long id, Pageable pageable);
 }

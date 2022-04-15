@@ -55,6 +55,20 @@ public class ProductController {
         return new ResponseEntity<>(productPage, HttpStatus.OK);
     }
 
+    @GetMapping("/viewProductByShop/{id}")
+    public ResponseEntity<Page<Product>> fillAllProductByShop(@RequestParam(name = "q") Optional<String> q, @PathVariable Long id, @PageableDefault(size = 8) Pageable pageable) {
+        Page<Product> productPage = null;
+        if (q.isPresent()) {
+            productPage = productService.findAllByNameContaining(q.get(), pageable);
+        } else {
+            productPage = productService.findByShop(id, pageable);
+        }
+        if (productPage.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(productPage, HttpStatus.OK);
+    }
+
 
     @GetMapping("/{id}")
     public ResponseEntity<Product> findById(@PathVariable Long id) {

@@ -40,11 +40,6 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public Page<Product> findByUser(Long id, Pageable pageable) {
-        return productRepository.getProductByUser(id, pageable);
-    }
-
-    @Override
     public Page<Product> findByPrice1v3(Pageable pageable) {
         return productRepository.getProductBy1V3(pageable);
     }
@@ -58,6 +53,17 @@ public class ProductService implements IProductService {
     public Page<Product> findByPrice5v7(Pageable pageable) {
         return productRepository.getProductBy5V7(pageable);
     }
+
+    @Override
+    public Page<Product> findByShop(Long id, Pageable pageable) {
+        return productRepository.getProductByShop(id, pageable);
+    }
+
+    @Override
+    public Page<Product> findByUser(Long id, Pageable pageable) {
+        return productRepository.getProductByUser(id, pageable);
+    }
+
 
 
     @Override
@@ -74,5 +80,4 @@ public class ProductService implements IProductService {
     public Page<Product> getProductWithName(Long id, Pageable pageable) {
         return productRepository.getProductWithNameSQL(id, pageable);
     }
-
 }
