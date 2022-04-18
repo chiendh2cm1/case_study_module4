@@ -11,8 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 public interface IBillRepository extends PagingAndSortingRepository<Bill, Long> {
     @Transactional
     @Modifying
-    @Query(value = "call delete_bill(?1)", nativeQuery = true)
-    void deleteBill(Long id);
+//    @Query(value = "call delete_bill(?1)", nativeQuery = true)
+//    void deleteBill(Long id);
     @Query(value = "select * from bill where user_id = ?1", nativeQuery = true)
     Iterable<Bill> getBillByUser(Long id);
 }

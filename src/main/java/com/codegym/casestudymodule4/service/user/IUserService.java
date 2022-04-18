@@ -22,5 +22,5 @@ public interface IUserService extends UserDetailsService {
     User saveAdmin(User user);
     User saveSeller(User user);
     Page<User> findAllUser(Pageable pageable);
-
+    User saveBlock(User user);
 }

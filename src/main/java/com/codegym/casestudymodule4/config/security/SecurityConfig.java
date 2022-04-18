@@ -74,8 +74,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/login",
                         "/register",
                         "**").permitAll()
-                .antMatchers("/products/**")
-                .access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
                 .anyRequest().authenticated()
                 .and().csrf().disable();
         http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
@@ -94,14 +92,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             roleAdmin.setId(1L);
             roleAdmin.setName("ROLE_ADMIN");
             roleService.save(roleAdmin);
+
             Role roleCoach = new Role();
             roleCoach.setId(2L);
             roleCoach.setName("ROLE_USER");
             roleService.save(roleCoach);
+
             Role roleSeller = new Role();
             roleSeller.setId(3L);
             roleCoach.setName("ROLE_SELLER");
             roleService.save(roleSeller);
+
+            Role roleBlock = new Role();
+            roleSeller.setId(4L);
+            roleCoach.setName("ROLE_BLOCK");
+            roleService.save(roleBlock);
         }
         if (users.isEmpty()) {
             User admin = new User("admin", "123456");

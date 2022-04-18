@@ -8,5 +8,6 @@ public interface IBill_detailService {
     void remove(Long id);
     Optional<Bill_detail> findById(Long id);
     Bill_detail save(Bill_detail bill_detail);
-    Iterable<Bill_detail> findByBill(Long id);
+    Iterable<Bill_detail> findByBill(String code);
+    void delete(String code);
 }

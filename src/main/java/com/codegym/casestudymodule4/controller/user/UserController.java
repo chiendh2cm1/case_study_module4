@@ -1,7 +1,5 @@
 package com.codegym.casestudymodule4.controller.user;
 
-import com.codegym.casestudymodule4.model.bill.Bill;
-import com.codegym.casestudymodule4.model.product.Product;
 import com.codegym.casestudymodule4.model.user.User;
 import com.codegym.casestudymodule4.service.user.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,4 +67,22 @@ public class UserController {
             return new ResponseEntity<>(new User(), HttpStatus.OK);
         }
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User user) {
+        Optional<User> userOptional = userService.findById(id);
+        if (!userOptional.isPresent()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        user.setId(userOptional.get().getId());
+        user.setFullName(userOptional.get().getFullName());
+        user.setUsername(userOptional.get().getUsername());
+        user.setPassword(userOptional.get().getPassword());
+        user.setEmail(userOptional.get().getEmail());
+        user.setPhoneNumber(userOptional.get().getPhoneNumber());
+        return new ResponseEntity<>(userService.save(user), HttpStatus.OK);
+    }
 }
+
+
+

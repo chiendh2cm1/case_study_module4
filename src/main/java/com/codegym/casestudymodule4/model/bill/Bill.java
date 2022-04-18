@@ -14,6 +14,7 @@ public class Bill {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String code;
     private String receiver;
     private String address;
     private String email;
@@ -21,11 +22,5 @@ public class Bill {
     @ManyToOne
     private User user;
 
-    public Bill(Long id, String address, String email, String phoneNumber, User user) {
-        this.id = id;
-        this.address = address;
-        this.email = email;
-        this.phoneNumber = phoneNumber;
-        this.user = user;
-    }
+
 }

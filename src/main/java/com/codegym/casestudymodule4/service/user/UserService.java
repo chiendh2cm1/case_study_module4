@@ -88,6 +88,17 @@ public class UserService implements IUserService {
         return userRepository.findAll(pageable);
     }
 
+    @Override
+    public User saveBlock(User user) {
+        String password = user.getPassword();
+        String encodePassword = passwordEncoder.encode(password);//Mã hóa pass của người dùng
+        user.setPassword(encodePassword);
+        List<Role> roles = new ArrayList<>();
+        roles.add(new Role(4L, "ROLE_BLOCK"));
+        user.setRoles(roles);
+        return userRepository.save(user);
+    }
+
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

@@ -18,4 +18,7 @@ public interface IShopRepository extends PagingAndSortingRepository <Shop, Long>
     @Query(value = "call delete_category(?1)", nativeQuery = true)
     void deleteCategory(Long id);
 
+    @Query(value = "select * from shop where user_id =?1", nativeQuery = true)
+    Shop findShopByUser(Long id);
+
 }

@@ -53,4 +53,9 @@ private ICategoryRepository categoryRepository;
     public Iterable<Category> getCategoryByUser(Long id) {
         return categoryRepository.getCategoryByUser(id);
     }
+
+    @Override
+    public Shop findByUser(Long id) {
+        return shopRepository.findShopByUser(id);
+    }
 }

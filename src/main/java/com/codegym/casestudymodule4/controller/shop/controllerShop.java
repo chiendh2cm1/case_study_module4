@@ -48,6 +48,15 @@ public class controllerShop {
         return new ResponseEntity<>(shopOptional.get(), HttpStatus.OK);
     }
 
+    @GetMapping("/findShopByUser/{id}")
+    public ResponseEntity<Shop> findShopByUser(@PathVariable Long id) {
+        Shop shop = shopService.findByUser(id);
+        if (shop == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } else return new ResponseEntity<>(shop, HttpStatus.OK);
+    }
+
+
     @PostMapping
     public ResponseEntity<Shop> save(@RequestBody Shop shop) {
         return new ResponseEntity<>(shopService.save(shop), HttpStatus.CREATED);

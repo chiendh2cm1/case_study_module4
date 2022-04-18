@@ -10,6 +10,12 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public interface IBill_detailRepository extends PagingAndSortingRepository<Bill_detail, Long> {
 
-    @Query(value = "select * from bill_detail where bill_id = ?1", nativeQuery = true)
-    Iterable<Bill_detail> getBill_detail(Long id);
+//    @Query(value = "select * from bill_detail where bill_id = ?1", nativeQuery = true)
+//    Iterable<Bill_detail> getBill_detail(Long id);
+
+    @Query(value = "select * from bill_detail where code = ?1", nativeQuery = true)
+    Iterable<Bill_detail> getBill_detail(String code);
+
+    void deleteBill_detailByCode(String code);
+
 }

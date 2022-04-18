@@ -1,7 +1,6 @@
 package com.codegym.casestudymodule4.controller.bill;
 
 import com.codegym.casestudymodule4.model.bill.Bill;
-import com.codegym.casestudymodule4.model.category.Category;
 import com.codegym.casestudymodule4.service.bill.IBillService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,6 +15,12 @@ import java.util.Optional;
 public class BillController {
     @Autowired
     IBillService billService;
+
+    @GetMapping
+    public ResponseEntity<Iterable<Bill>> getAll() {
+        Iterable<Bill> bills = billService.findAll();
+        return new ResponseEntity<>(bills, HttpStatus.OK);
+    }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Bill> deleteBill(@PathVariable Long id) {

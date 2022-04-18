@@ -10,4 +10,5 @@ public interface IShopService extends IGeneralService<Shop> {
     Iterable<Shop> findShopByNameContaining(String name);
     Page<Category> getCategoryByShop(Long id, Pageable pageable);
     Iterable<Category> getCategoryByUser(Long id);
+    Shop findByUser(Long id);
 }

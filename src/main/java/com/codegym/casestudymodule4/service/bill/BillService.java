@@ -19,7 +19,7 @@ public class BillService implements IBillService {
 
     @Override
     public void remove(Long id) {
-        billRepository.deleteBill(id);
+        billRepository.deleteById(id);
     }
 
     @Override

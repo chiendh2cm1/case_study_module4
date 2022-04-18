@@ -15,7 +15,7 @@ public class Bill_detailService implements IBill_detailService {
 
     @Override
     public Iterable<Bill_detail> findAll() {
-        return null;
+        return bill_detailRepository.findAll();
     }
 
     @Override
@@ -34,7 +34,12 @@ public class Bill_detailService implements IBill_detailService {
     }
 
     @Override
-    public Iterable<Bill_detail> findByBill(Long id) {
-        return bill_detailRepository.getBill_detail(id);
+    public Iterable<Bill_detail> findByBill(String code) {
+        return bill_detailRepository.getBill_detail(code);
+    }
+
+    @Override
+    public void delete(String code) {
+        bill_detailRepository.deleteBill_detailByCode(code);
     }
 }

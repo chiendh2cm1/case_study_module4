@@ -1,4 +1,5 @@
-package com.codegym.casestudymodule4.model.bill_detail;
+package com.codegym.casestudymodule4.model.comment;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,12 +10,10 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Bill_detail {
+public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String code;
     private String name;
-    private int quantity;
-    private double price;
+    private String comment;
 }
